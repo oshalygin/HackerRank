@@ -1,0 +1,25 @@
+{
+  "name": "javascript-hackerrank",
+  "version": "1.0.0",
+  "description": "Hacker Rank solutiuons in JavaScript(ES6)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oshalygin/HackerRank.git"
+  },
+  "keywords": [
+    "hacker",
+    "rank",
+    "javascript"
+  ],
+  "author": "oshalygin@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oshalygin/HackerRank/issues"
+  },
+  "homepage": "https://github.com/oshalygin/HackerRank#readme"
+}
