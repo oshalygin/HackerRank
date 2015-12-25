@@ -1,13 +1,19 @@
 {
 	"extends": "eslint:recommended",
 	"rules": {
-		"no-alert": 0,
 		"no-bitwise": 0,
 		"camelcase": 1,
 		"curly": 1,
-		"eqeqeq": 0,
-		"no-eq-null": 0,
+		"eqeqeq": 1,
+		"no-eq-null": 1,
 		"guard-for-in": 1,
+        "no-eval": 1,
+        "no-fallthrough": 1,
+        "no-implied-eval": 1,
+        "no-proto": 1,
+        "vars-on-top": 1,
+        "no-with": 1,
+        ""
 		"no-empty": 1,
         "no-console": 0
 	},
