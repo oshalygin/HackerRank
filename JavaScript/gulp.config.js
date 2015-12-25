@@ -1,11 +1,12 @@
 module.exports = function () {
 
-    var publicDirectory = "./wwwroot/";
-    // var bowerJson = require("./bower.json");
 
+    var solutionsJavaScriptFiles = "solutions/**/*.js";
+    var excludeNodeModulesDirectory = "!node_modules/**";
 
     var config = {
-        wwwroot: publicDirectory
+        solutionsJavaScriptFiles: solutionsJavaScriptFiles,
+        excludeNodeModulesDirectory: excludeNodeModulesDirectory
     };
 
     return config;
