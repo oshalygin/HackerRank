@@ -19,6 +19,17 @@ gulp.task("eslint", function () {
 
 });
 
+
+gulp.task("tests", function () {
+    log("*** Running JavaScript Tests ***");
+
+new Server({
+        configFile: config.karmaConfiguration,
+        singleRun: true
+    }).start();
+
+});
+
 gulp.task("default", ["help"]);
 
 gulp.task("help", $.taskListing);
