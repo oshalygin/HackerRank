@@ -4,13 +4,12 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['jasmine'],
         files: [
-            { pattern: 'solutions/**/*.js'}
+            { pattern: 'solutions/**/*.js' }
         ],
         exclude: [
         ],
         reporters: ['mocha'],
-        colors: true,
-        logLevel: config.LOG_INFO,
+
         autoWatch: false,
         browsers: ['PhantomJS']
     });
