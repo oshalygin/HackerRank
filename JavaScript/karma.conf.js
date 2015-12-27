@@ -16,9 +16,7 @@ module.exports = function (config) {
             'karma-jasmine',
             'karma-mocha-reporter',
             "karma-phantomjs-launcher"
-
         ]
-
     });
 };
 
