@@ -1,3 +1,11 @@
+//Polyfills - Add this to another file
+
+if (!String.prototype.includes) {
+  String.prototype.includes = function() {'use strict';
+    return String.prototype.indexOf.apply(this, arguments) !== -1;
+  };
+}
+
 
 (function() {
 
@@ -141,7 +149,10 @@
                 let seconds: number = parseInt(argument.slice(0, 2));
                 let evening: boolean = false;
 
-                // evening = argument.includes("PM") || argument.includes("pm");
+                // evening = argument.
+
+                let derp = "hello".includes("e");
+
                 return {
                     seconds: seconds,
                     evening: evening
