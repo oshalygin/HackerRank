@@ -20,14 +20,33 @@ gulp.task("eslint", function () {
 });
 
 
-gulp.task("tests", function () {
+gulp.task("t", ["transpile"], function () {
     log("*** Running JavaScript Tests ***");
 
-new Server({
+    new Server({
         configFile: config.karmaConfiguration,
         singleRun: true
     }).start();
 
+});
+
+gulp.task("transpile", function () {
+
+    log("** Transpiling Dev Folder **");
+
+
+    var typescriptOptions = {
+
+        removeComments: true,
+        target: "ES5",
+        noImplicitAny: true
+
+    };
+
+    return gulp
+        .src([config.typeScriptFiles, config.tsTypingDefinitions])
+        .pipe($.typescript(typescriptOptions))
+        .pipe(gulp.dest(config.solutionsPath));
 });
 
 gulp.task("default", ["help"]);
