@@ -43,7 +43,8 @@
             let inputCacpacityOfValues = "5";
             let inputStringOfValues = "1 2 3 4 10 11";
             let expected = 31;
-            let actual = 0;
+            let actual: number = 0;
+
 
             let numberOfValues = parseInt(inputCacpacityOfValues);
             let arrayOfValues = inputStringOfValues.split(" ");
@@ -86,10 +87,74 @@
             let expected = 5000000015;
             let actual = 0;
 
+            let sum = (array) => {
+                let result = 0;
+                for (let val of array) {
+                    result += val;
+                }
+                return result;
+            };
 
+            let arrayOfStringValues = inputStringOfValues.split(" ");
 
+            let arrayOfNumbers = arrayOfStringValues.map(function(value) {
+                return parseInt(value);
+            });
+
+            actual = sum(arrayOfNumbers);
             expect(actual).toEqual(expected);
 
+
+        });
+
+        it("Time Conversion", function() {
+
+            // Problem Statement
+
+            // Given a time in AM/PM format, convert it to military (24-hour) time.
+
+            // Note: Midnight is 12:00:00AM on a 12-hour clock and 00:00:00 on a 24-hour clock. Noon is 12:00:00PM on a 12-hour clock and 12:00:00 on a 24-hour clock.
+
+            // Input Format
+
+            // A time in 12-hour clock format (i.e.: hh:mm:ssAM or hh:mm:ssPM), where 01≤hh≤12.
+
+            // Output Format
+
+            // Convert and print the given time in 24-hour format, where 00≤hh≤23.
+
+            // Sample Input
+
+            // 07:05:45PM
+
+            // Sample Output
+
+            // 19:05:45
+
+            // Explanation
+
+            // 7 PM is after noon, so you need to add 12 hours to it during conversion. 12 + 7 = 19. Minutes and seconds do not change in 12-24 hour time conversions, so the answer is 19:05:45.
+
+
+            let isAfternoon = (argument: string) => {
+
+                let seconds: number = parseInt(argument.slice(0, 2));
+                let evening: boolean = false;
+
+                // evening = argument.includes("PM") || argument.includes("pm");
+                return {
+                    seconds: seconds,
+                    evening: evening
+                };
+            };
+
+            let timeInput = "07:05:45PM";
+            let splitInputIntoBlocks: string[] = timeInput.split(":");
+
+            let secondsAndTimeOfDay = splitInputIntoBlocks[splitInputIntoBlocks.length - 1];
+            let lastPortionOfTime = isAfternoon(secondsAndTimeOfDay);
+
+            console.log(lastPortionOfTime.evening);
 
         });
 
