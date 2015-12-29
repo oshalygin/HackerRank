@@ -20,7 +20,7 @@ gulp.task("eslint", function () {
 });
 
 
-gulp.task("t", ["transpile"], function () {
+gulp.task("run-tests", ["transpile"], function () {
     log("*** Running JavaScript Tests ***");
 
     new Server({
@@ -49,7 +49,7 @@ gulp.task("transpile", function () {
         .pipe(gulp.dest(config.solutionsPath));
 });
 
-gulp.task("default", ["help"]);
+gulp.task("default", ["run-tests"]);
 
 gulp.task("help", $.taskListing);
 

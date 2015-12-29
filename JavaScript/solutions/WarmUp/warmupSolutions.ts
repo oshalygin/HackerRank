@@ -1,11 +1,5 @@
-//Polyfills - Add this to another file
 
-if (!String.prototype.includes) {
-  String.prototype.includes = function() {'use strict';
-    return String.prototype.indexOf.apply(this, arguments) !== -1;
-  };
-}
-
+/// <reference path="../es6polyfills.ts"/>
 
 (function() {
 
@@ -116,57 +110,97 @@ if (!String.prototype.includes) {
         });
 
         it("Time Conversion", function() {
+            let cases = [
+                { input: "07:05:45PM", expected: "19:05:45" },
+                { input: "01:05:45PM", expected: "13:05:45" },
+                { input: "12:00:00AM", expected: "00:00:00" },
+                { input: "12:32:13AM", expected: "00:32:13" },
+                { input: "12:30:00PM", expected: "12:30:00" },
+                { input: "03:00:00AM", expected: "03:00:00" }
+            ];
 
-            // Problem Statement
+            for (let testCase of cases) {
+                // Problem Statement
 
-            // Given a time in AM/PM format, convert it to military (24-hour) time.
+                // Given a time in AM/PM format, convert it to military (24-hour) time.
 
-            // Note: Midnight is 12:00:00AM on a 12-hour clock and 00:00:00 on a 24-hour clock. Noon is 12:00:00PM on a 12-hour clock and 12:00:00 on a 24-hour clock.
+                // Note: Midnight is 12:00:00AM on a 12-hour clock and 00:00:00 on a 24-hour clock. Noon is 12:00:00PM on a 12-hour clock and 12:00:00 on a 24-hour clock.
 
-            // Input Format
+                // Input Format
 
-            // A time in 12-hour clock format (i.e.: hh:mm:ssAM or hh:mm:ssPM), where 01≤hh≤12.
+                // A time in 12-hour clock format (i.e.: hh:mm:ssAM or hh:mm:ssPM), where 01≤hh≤12.
 
-            // Output Format
+                // Output Format
 
-            // Convert and print the given time in 24-hour format, where 00≤hh≤23.
+                // Convert and print the given time in 24-hour format, where 00≤hh≤23.
 
-            // Sample Input
+                // Sample Input
 
-            // 07:05:45PM
+                // 07:05:45PM
 
-            // Sample Output
+                // Sample Output
 
-            // 19:05:45
+                // 19:05:45
 
-            // Explanation
+                // Explanation
 
-            // 7 PM is after noon, so you need to add 12 hours to it during conversion. 12 + 7 = 19. Minutes and seconds do not change in 12-24 hour time conversions, so the answer is 19:05:45.
+                // 7 PM is after noon, so you need to add 12 hours to it during conversion. 12 + 7 = 19. Minutes and seconds do not change in 12-24 hour time conversions, so the answer is 19:05:45.
 
+                class Time {
+                    hours: number;
+                    minutes: number;
+                    seconds: number;
 
-            let isAfternoon = (argument: string) => {
+                    toString(): string {
 
-                let seconds: number = parseInt(argument.slice(0, 2));
-                let evening: boolean = false;
+                        let substring = (this.hours < 10) ? "0" + this.hours.toString() : this.hours.toString();
+                        substring += ":";
+                        substring += (this.minutes < 10) ? "0" + this.minutes.toString() : this.minutes.toString();
+                        substring += ":";
+                        substring += (this.seconds < 10) ? "0" + this.seconds.toString() : this.seconds.toString();
 
-                // evening = argument.
+                        return substring;
 
-                let derp = "hello".includes("e");
+                    }
+                }
 
-                return {
-                    seconds: seconds,
-                    evening: evening
+                let secondsAndAfternoon = (argument: string) => {
+
+                    let seconds: number = parseInt(argument.slice(0, 2));
+                    let evening: boolean = false;
+
+                    evening = argument.includes("PM") || argument.includes("pm");
+
+                    let derp = "hello".includes("e");
+
+                    return {
+                        seconds: seconds,
+                        evening: evening
+                    };
                 };
-            };
 
-            let timeInput = "07:05:45PM";
-            let splitInputIntoBlocks: string[] = timeInput.split(":");
+                let splitInputIntoBlocks: string[] = testCase.input.split(":");
 
-            let secondsAndTimeOfDay = splitInputIntoBlocks[splitInputIntoBlocks.length - 1];
-            let lastPortionOfTime = isAfternoon(secondsAndTimeOfDay);
+                let secondsAndTimeOfDay = splitInputIntoBlocks[splitInputIntoBlocks.length - 1];
+                let lastPortionOfTime = secondsAndAfternoon(secondsAndTimeOfDay);
 
-            console.log(lastPortionOfTime.evening);
+                let outputTime = new Time();
+                let initialHours = parseInt(splitInputIntoBlocks[0]);
 
+                outputTime.hours =
+                    (lastPortionOfTime.evening && initialHours !== 12)
+                    ? initialHours + 12
+                    : (!lastPortionOfTime.evening && initialHours == 12)
+                        ? initialHours - 12
+                        : initialHours;
+
+                outputTime.minutes = parseInt(splitInputIntoBlocks[1]);
+                outputTime.seconds = lastPortionOfTime.seconds;
+                let actual = outputTime.toString();
+
+                expect(actual).toEqual(testCase.expected);
+
+            }
         });
 
     });

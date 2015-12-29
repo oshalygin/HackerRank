@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "noLib": true,
-        "target": "es3",
+        "target": "es5",
         "removeComments": true
     }
 }
