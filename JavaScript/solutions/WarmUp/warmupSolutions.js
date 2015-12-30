@@ -7,7 +7,7 @@
             var expected = 134;
             var firstInteger = parseInt(firstInput);
             var secondInteger = parseInt(secondInput);
-            var sumCalculator = function (x, y) { return x + y; };
+            var sumCalculator = (x, y) => x + y;
             var actual = sumCalculator(firstInteger, secondInteger);
             expect(actual).toEqual(expected);
         });
@@ -23,14 +23,13 @@
             //  Output a single value equal to the sum of the elements in the array.
             //  For the sample above you would just print 31 since 1+2+3+4+10+11=31.
             "use strict";
-            var inputCacpacityOfValues = "5";
-            var inputStringOfValues = "1 2 3 4 10 11";
-            var expected = 31;
-            var actual = 0;
-            var numberOfValues = parseInt(inputCacpacityOfValues);
-            var arrayOfValues = inputStringOfValues.split(" ");
-            for (var _i = 0; _i < arrayOfValues.length; _i++) {
-                var value = arrayOfValues[_i];
+            let inputCacpacityOfValues = "5";
+            let inputStringOfValues = "1 2 3 4 10 11";
+            let expected = 31;
+            let actual = 0;
+            let numberOfValues = parseInt(inputCacpacityOfValues);
+            let arrayOfValues = inputStringOfValues.split(" ");
+            for (let value of arrayOfValues) {
                 actual += parseInt(value);
             }
             expect(actual).toEqual(expected);
@@ -50,27 +49,26 @@
             //  Print a single value equal to the sum of the elements in the array. In the above sample, you would print 5000000015.
             // Note: The range of the 32-bit integer is (−231) to (231−1) or [−2147483648,2147483647].
             //  When we add several integer values, the resulting sum might exceed the above range. You might need to use long long int in C/C++ or long data type in Java to store such sums.
-            var inputCapacityOfValues = "5";
-            var inputStringOfValues = "1000000001 1000000002 1000000003 1000000004 1000000005";
-            var expected = 5000000015;
-            var actual = 0;
-            var sum = function (array) {
-                var result = 0;
-                for (var _i = 0; _i < array.length; _i++) {
-                    var val = array[_i];
+            let inputCapacityOfValues = "5";
+            let inputStringOfValues = "1000000001 1000000002 1000000003 1000000004 1000000005";
+            let expected = 5000000015;
+            let actual = 0;
+            let sum = (array) => {
+                let result = 0;
+                for (let val of array) {
                     result += val;
                 }
                 return result;
             };
-            var arrayOfStringValues = inputStringOfValues.split(" ");
-            var arrayOfNumbers = arrayOfStringValues.map(function (value) {
+            let arrayOfStringValues = inputStringOfValues.split(" ");
+            let arrayOfNumbers = arrayOfStringValues.map(function (value) {
                 return parseInt(value);
             });
             actual = sum(arrayOfNumbers);
             expect(actual).toEqual(expected);
         });
         it("Time Conversion", function () {
-            var cases = [
+            let cases = [
                 { input: "07:05:45PM", expected: "19:05:45" },
                 { input: "01:05:45PM", expected: "13:05:45" },
                 { input: "12:00:00AM", expected: "00:00:00" },
@@ -78,8 +76,7 @@
                 { input: "12:30:00PM", expected: "12:30:00" },
                 { input: "03:00:00AM", expected: "03:00:00" }
             ];
-            for (var _i = 0; _i < cases.length; _i++) {
-                var testCase = cases[_i];
+            for (let testCase of cases) {
                 // Problem Statement
                 // Given a time in AM/PM format, convert it to military (24-hour) time.
                 // Note: Midnight is 12:00:00AM on a 12-hour clock and 00:00:00 on a 24-hour clock. Noon is 12:00:00PM on a 12-hour clock and 12:00:00 on a 24-hour clock.
@@ -93,34 +90,31 @@
                 // 19:05:45
                 // Explanation
                 // 7 PM is after noon, so you need to add 12 hours to it during conversion. 12 + 7 = 19. Minutes and seconds do not change in 12-24 hour time conversions, so the answer is 19:05:45.
-                var Time = (function () {
-                    function Time() {
-                    }
-                    Time.prototype.toString = function () {
-                        var substring = (this.hours < 10) ? "0" + this.hours.toString() : this.hours.toString();
+                class Time {
+                    toString() {
+                        let substring = (this.hours < 10) ? "0" + this.hours.toString() : this.hours.toString();
                         substring += ":";
                         substring += (this.minutes < 10) ? "0" + this.minutes.toString() : this.minutes.toString();
                         substring += ":";
                         substring += (this.seconds < 10) ? "0" + this.seconds.toString() : this.seconds.toString();
                         return substring;
-                    };
-                    return Time;
-                })();
-                var secondsAndAfternoon = function (argument) {
-                    var seconds = parseInt(argument.slice(0, 2));
-                    var evening = false;
+                    }
+                }
+                let secondsAndAfternoon = (argument) => {
+                    let seconds = parseInt(argument.slice(0, 2));
+                    let evening = false;
                     evening = argument.includes("PM") || argument.includes("pm");
-                    var derp = "hello".includes("e");
+                    let derp = "hello".includes("e");
                     return {
                         seconds: seconds,
                         evening: evening
                     };
                 };
-                var splitInputIntoBlocks = testCase.input.split(":");
-                var secondsAndTimeOfDay = splitInputIntoBlocks[splitInputIntoBlocks.length - 1];
-                var lastPortionOfTime = secondsAndAfternoon(secondsAndTimeOfDay);
-                var outputTime = new Time();
-                var initialHours = parseInt(splitInputIntoBlocks[0]);
+                let splitInputIntoBlocks = testCase.input.split(":");
+                let secondsAndTimeOfDay = splitInputIntoBlocks[splitInputIntoBlocks.length - 1];
+                let lastPortionOfTime = secondsAndAfternoon(secondsAndTimeOfDay);
+                let outputTime = new Time();
+                let initialHours = parseInt(splitInputIntoBlocks[0]);
                 outputTime.hours =
                     (lastPortionOfTime.evening && initialHours !== 12)
                         ? initialHours + 12
@@ -129,9 +123,47 @@
                             : initialHours;
                 outputTime.minutes = parseInt(splitInputIntoBlocks[1]);
                 outputTime.seconds = lastPortionOfTime.seconds;
-                var actual = outputTime.toString();
+                let actual = outputTime.toString();
                 expect(actual).toEqual(testCase.expected);
             }
+        });
+        it("Plus Minus", function () {
+            // Problem Statement
+            // Given an array of integers, calculate which fraction of the elements are positive, negative, and zeroes, respectively. Print the decimal value of each fraction.
+            // Input Format
+            // The first line, N, is the size of the array.
+            //  The second line contains N space-separated integers describing the array of numbers (A1,A2,A3,⋯,AN).
+            // Output Format
+            // Print each value on its own line with the fraction of positive numbers first, negative numbers second, and zeroes third.
+            // Sample Input
+            // 6
+            // -4 3 -9 0 4 1
+            // Sample Output
+            // 0.500000
+            // 0.333333
+            // 0.166667
+            // Explanation
+            // There are 3 positive numbers, 2 negative numbers, and 1 zero in the array.
+            //  The fraction of the positive numbers, negative numbers and zeroes are 36=0.500000, 26=0.333333 and 16=0.166667, respectively.
+            // Note: This challenge introduces precision problems. The test cases are scaled to six decimal places, though answers with absolute error of up to 10−4 are acceptable.
+            let input = "-4 3 -9 0 4 1";
+            let expectedPositive = 0.500000;
+            let expectedNegative = 0.333333;
+            let expectedZero = 0.166667;
+            let inputArray = input.split(" ");
+            let arrayOfNumbers = inputArray.map((value) => parseInt(value));
+            let numberOfPositiveIntegerValues = 0;
+            let numberOfNegativeIntegerValues = 0;
+            let numberOfZeroValues = 0;
+            let filter = function* (integers, predicate) {
+                for (let integer of integers) {
+                    if (predicate(integer)) {
+                        yield 1;
+                    }
+                }
+            };
+            var stuff = filter(arrayOfNumbers, x => x > 0);
+            console.log(stuff);
         });
     });
 })();

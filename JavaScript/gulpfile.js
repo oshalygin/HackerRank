@@ -38,7 +38,7 @@ gulp.task("transpile", function () {
     var typescriptOptions = {
 
         removeComments: false,
-        target: "es5",
+        target: "es6",
         noImplicitAny: true
 
     };
