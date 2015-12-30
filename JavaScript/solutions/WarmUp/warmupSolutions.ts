@@ -252,7 +252,7 @@
             let filter = function* (integers, predicate) {
                 for (let integer of integers) {
                     if (predicate(integer)) {
-                        yield 1;
+                        return 1;
                     }
                 }
             };
