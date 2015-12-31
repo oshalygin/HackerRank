@@ -156,21 +156,40 @@
             var expectedPositive = 0.500000;
             var expectedNegative = 0.333333;
             var expectedZero = 0.166667;
+            var expectedPrecisionToDecimalPlaces = 5;
             var inputArray = input.split(" ");
             var arrayOfNumbers = inputArray.map(function (value) { return parseInt(value); });
             var numberOfPositiveIntegerValues = 0;
             var numberOfNegativeIntegerValues = 0;
             var numberOfZeroValues = 0;
-            var filter = function (integers, predicate) {
-                for (var _i = 0; _i < integers.length; _i++) {
-                    var integer = integers[_i];
-                    if (predicate(integer)) {
-                        return 1;
-                    }
+            //function generators are not currently supported by typescript transpilation or babel.
+            // let filter = function* (integers, predicate) {
+            //     for (let integer of integers) {
+            //         if (predicate(integer)) {
+            //             return 1;
+            //         }
+            //     }
+            // };
+            // var stuff = filter(arrayOfNumbers, x=> x > 0);
+            for (var _i = 0; _i < arrayOfNumbers.length; _i++) {
+                var number = arrayOfNumbers[_i];
+                if (number > 0) {
+                    numberOfPositiveIntegerValues += 1;
                 }
-            };
-            var stuff = filter(arrayOfNumbers, function (x) { return x > 0; });
-            console.log(stuff);
+                else if (number < 0) {
+                    numberOfNegativeIntegerValues += 1;
+                }
+                else {
+                    numberOfZeroValues += 1;
+                }
+            }
+            var fractionOfPositiveNumbers = (numberOfPositiveIntegerValues / arrayOfNumbers.length).toFixed(6);
+            var fractionOfNegativeNumbers = (numberOfNegativeIntegerValues / arrayOfNumbers.length).toFixed(6);
+            var fractionOfZeroNumbers = (numberOfZeroValues / arrayOfNumbers.length).toFixed(6);
+            
+            expect(fractionOfPositiveNumbers).toBeCloseTo(expectedPositive, expectedPrecisionToDecimalPlaces);
+            expect(fractionOfNegativeNumbers).toBeCloseTo(expectedNegative, expectedPrecisionToDecimalPlaces);
+            expect(fractionOfZeroNumbers).toBeCloseTo(expectedZero, expectedPrecisionToDecimalPlaces);
         });
     });
 })();

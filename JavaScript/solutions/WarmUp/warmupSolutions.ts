@@ -189,10 +189,10 @@
 
                 outputTime.hours =
                     (lastPortionOfTime.evening && initialHours !== 12)
-                    ? initialHours + 12
-                    : (!lastPortionOfTime.evening && initialHours == 12)
-                        ? initialHours - 12
-                        : initialHours;
+                        ? initialHours + 12
+                        : (!lastPortionOfTime.evening && initialHours == 12)
+                            ? initialHours - 12
+                            : initialHours;
 
                 outputTime.minutes = parseInt(splitInputIntoBlocks[1]);
                 outputTime.seconds = lastPortionOfTime.seconds;
@@ -241,6 +241,7 @@
             let expectedPositive = 0.500000;
             let expectedNegative = 0.333333;
             let expectedZero = 0.166667;
+            let expectedPrecisionToDecimalPlaces = 5;
 
             let inputArray = input.split(" ");
             let arrayOfNumbers = inputArray.map((value) => parseInt(value));
@@ -249,17 +250,40 @@
             let numberOfNegativeIntegerValues = 0;
             let numberOfZeroValues = 0;
 
-            let filter = function* (integers, predicate) {
-                for (let integer of integers) {
-                    if (predicate(integer)) {
-                        return 1;
-                    }
+
+            //function generators are not currently supported by typescript transpilation or babel.
+
+            // let filter = function* (integers, predicate) {
+            //     for (let integer of integers) {
+            //         if (predicate(integer)) {
+            //             return 1;
+            //         }
+            //     }
+            // };
+
+
+            // var stuff = filter(arrayOfNumbers, x=> x > 0);
+
+            for (let number of arrayOfNumbers) {
+                if (number > 0) {
+                    numberOfPositiveIntegerValues += 1;
                 }
-            };
+                else if (number < 0) {
+                    numberOfNegativeIntegerValues += 1;
+                }
+                else {
+                    numberOfZeroValues += 1;
+                }
+            }
+
+            let fractionOfPositiveNumbers = (numberOfPositiveIntegerValues / arrayOfNumbers.length).toFixed(6)
+            let fractionOfNegativeNumbers = (numberOfNegativeIntegerValues / arrayOfNumbers.length).toFixed(6)
+            let fractionOfZeroNumbers = (numberOfZeroValues / arrayOfNumbers.length).toFixed(6)
 
 
-            var stuff = filter(arrayOfNumbers, x=> x > 0);
-            console.log(stuff);
+            expect(fractionOfPositiveNumbers).toBeCloseTo(expectedPositive, expectedPrecisionToDecimalPlaces);
+            expect(fractionOfNegativeNumbers).toBeCloseTo(expectedNegative, expectedPrecisionToDecimalPlaces)
+            expect(fractionOfZeroNumbers).toBeCloseTo(expectedZero, expectedPrecisionToDecimalPlaces);
 
 
         });
