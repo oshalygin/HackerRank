@@ -236,8 +236,6 @@
             for (var i = 0; i < diagonalSizeInputNumber; i++) {
                 firstDiagonal += inputArray[j][i];
                 secondDiagonal += inputArray[i][diagonalSizeInputNumber - 1 - j];
-                console.log(firstDiagonal);
-                console.log(secondDiagonal);
                 j++;
             }
             var actual = Math.abs(firstDiagonal - secondDiagonal);

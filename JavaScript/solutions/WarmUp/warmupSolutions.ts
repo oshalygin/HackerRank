@@ -349,11 +349,8 @@
             let secondDiagonal = 0;
             let j = 0;
             for (let i = 0; i < diagonalSizeInputNumber; i++) {
-
                 firstDiagonal += inputArray[j][i];
                 secondDiagonal += inputArray[i][diagonalSizeInputNumber - 1 - j];
-                console.log(firstDiagonal);
-                console.log(secondDiagonal);
                 j++;
             }
 
