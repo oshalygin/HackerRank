@@ -229,14 +229,14 @@
             }
             var firstDiagonal = 0;
             var secondDiagonal = 0;
+            var j = 0;
             for (var i = 0; i < diagonalSizeInputNumber; i++) {
-                for (var j = 0; j < diagonalSizeInputNumber; j++) {
-                    firstDiagonal += inputArray[j][i];
-                    secondDiagonal += inputArray[diagonalSizeInputNumber - 1 - j][diagonalSizeInputNumber - 1 - i];
-                }
+                firstDiagonal += inputArray[j][i];
+                secondDiagonal += inputArray[diagonalSizeInputNumber - 1 - i][diagonalSizeInputNumber - 1 - i];
+                j++;
             }
-            console.log(firstDiagonal);
-            console.log(secondDiagonal);
+            var actual = Math.abs(firstDiagonal - secondDiagonal);
+            expect(actual).toEqual(expected);
         });
     });
 })();
