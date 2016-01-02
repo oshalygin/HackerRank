@@ -328,18 +328,22 @@
             //  Difference: |4 - 19| = 15
 
             let diagonalSizeInput = "3";
-            let expected = 0;
+            let expected = 15;
             let diagonalSizeInputNumber = parseInt(diagonalSizeInput);
 
             let inputArray = [];
 
             //Bunch of readline stuff here for the real HackerRank thing
-            for (let i = 0; i < diagonalSizeInputNumber; i++) {
-                let lineInput = "11 2 4" //readLine();
-                let lineArray = lineInput.split(" ");
-                let arrayOfNumbers = lineArray.map(x => parseInt(x));
-                inputArray.push(arrayOfNumbers);
-            }
+            // for (let i = 0; i < diagonalSizeInputNumber; i++) {
+            //     let lineInput = "11 2 4" //readLine();
+            //     let lineArray = lineInput.split(" ");
+            //     let arrayOfNumbers = lineArray.map(x => parseInt(x));
+            //     inputArray.push(arrayOfNumbers);
+            // }
+
+            inputArray.push([11, 2, 4]);
+            inputArray.push([4, 5, 6]);
+            inputArray.push([10, 8, -12]);
 
             let firstDiagonal = 0;
             let secondDiagonal = 0;
@@ -347,7 +351,9 @@
             for (let i = 0; i < diagonalSizeInputNumber; i++) {
 
                 firstDiagonal += inputArray[j][i];
-                secondDiagonal += inputArray[diagonalSizeInputNumber - 1 - i][diagonalSizeInputNumber - 1 - i];
+                secondDiagonal += inputArray[i][diagonalSizeInputNumber - 1 - j];
+                console.log(firstDiagonal);
+                console.log(secondDiagonal);
                 j++;
             }
 

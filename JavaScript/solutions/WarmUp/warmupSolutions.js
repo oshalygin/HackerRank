@@ -217,22 +217,27 @@
             //  Sum across the secondary diagonal: 4 + 5 + 10 = 19
             //  Difference: |4 - 19| = 15
             var diagonalSizeInput = "3";
-            var expected = 0;
+            var expected = 15;
             var diagonalSizeInputNumber = parseInt(diagonalSizeInput);
             var inputArray = [];
             //Bunch of readline stuff here for the real HackerRank thing
-            for (var i = 0; i < diagonalSizeInputNumber; i++) {
-                var lineInput = "11 2 4"; //readLine();
-                var lineArray = lineInput.split(" ");
-                var arrayOfNumbers = lineArray.map(function (x) { return parseInt(x); });
-                inputArray.push(arrayOfNumbers);
-            }
+            // for (let i = 0; i < diagonalSizeInputNumber; i++) {
+            //     let lineInput = "11 2 4" //readLine();
+            //     let lineArray = lineInput.split(" ");
+            //     let arrayOfNumbers = lineArray.map(x => parseInt(x));
+            //     inputArray.push(arrayOfNumbers);
+            // }
+            inputArray.push([11, 2, 4]);
+            inputArray.push([4, 5, 6]);
+            inputArray.push([10, 8, -12]);
             var firstDiagonal = 0;
             var secondDiagonal = 0;
             var j = 0;
             for (var i = 0; i < diagonalSizeInputNumber; i++) {
                 firstDiagonal += inputArray[j][i];
-                secondDiagonal += inputArray[diagonalSizeInputNumber - 1 - i][diagonalSizeInputNumber - 1 - i];
+                secondDiagonal += inputArray[i][diagonalSizeInputNumber - 1 - j];
+                console.log(firstDiagonal);
+                console.log(secondDiagonal);
                 j++;
             }
             var actual = Math.abs(firstDiagonal - secondDiagonal);
