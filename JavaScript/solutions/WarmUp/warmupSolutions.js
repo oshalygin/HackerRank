@@ -186,10 +186,57 @@
             var fractionOfPositiveNumbers = (numberOfPositiveIntegerValues / arrayOfNumbers.length).toFixed(6);
             var fractionOfNegativeNumbers = (numberOfNegativeIntegerValues / arrayOfNumbers.length).toFixed(6);
             var fractionOfZeroNumbers = (numberOfZeroValues / arrayOfNumbers.length).toFixed(6);
-            
             expect(fractionOfPositiveNumbers).toBeCloseTo(expectedPositive, expectedPrecisionToDecimalPlaces);
             expect(fractionOfNegativeNumbers).toBeCloseTo(expectedNegative, expectedPrecisionToDecimalPlaces);
             expect(fractionOfZeroNumbers).toBeCloseTo(expectedZero, expectedPrecisionToDecimalPlaces);
+        });
+        it("Diagonal Difference", function () {
+            // Problem Statement
+            // Given a square matrix of size N×N, calculate the absolute difference between the sums of its diagonals.
+            // Input Format
+            // The first line contains a single integer, N. The next N lines denote the matrix's rows, with each line containing N space-separated integers describing the columns.
+            // Output Format
+            // Print the absolute difference between the two sums of the matrix's diagonals as a single integer.
+            // Sample Input
+            // 3
+            // 11 2 4
+            // 4 5 6
+            // 10 8 -12
+            // Sample Output
+            // 15
+            // Explanation
+            // The primary diagonal is:
+            //  11
+            //        5
+            //              -12
+            // Sum across the primary diagonal: 11 + 5 - 12 = 4
+            // The secondary diagonal is:
+            //              4
+            //        5
+            //  10
+            //  Sum across the secondary diagonal: 4 + 5 + 10 = 19
+            //  Difference: |4 - 19| = 15
+            var diagonalSizeInput = "3";
+            var expected = 0;
+            var diagonalSizeInputNumber = parseInt(diagonalSizeInput);
+            var inputArray = [];
+            //Bunch of readline stuff here for the real HackerRank thing
+            for (var i = 0; i < diagonalSizeInputNumber; i++) {
+                var lineInput = "11 2 4"; //readLine();
+                var lineArray = lineInput.split(" ");
+                var arrayOfNumbers = lineArray.map(function (x) { return parseInt(x); });
+                inputArray.push(arrayOfNumbers);
+            }
+            var firstDiagonal = 0;
+            var secondDiagonal = 0;
+            for (var i = 0; i < diagonalSizeInputNumber; i++) {
+                for (var j = 0; j < diagonalSizeInputNumber; j++) {
+                    firstDiagonal += inputArray[j][i];
+                    secondDiagonal += inputArray[diagonalSizeInputNumber - 1 - j][diagonalSizeInputNumber - 1 - i];
+                }
+            }
+            console.log(firstDiagonal);
+            console.log(secondDiagonal);
         });
     });
 })();
