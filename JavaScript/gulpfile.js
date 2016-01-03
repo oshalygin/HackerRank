@@ -54,7 +54,9 @@ gulp.task("default", ["run-tests"]);
 gulp.task("help", $.taskListing);
 
 function serve() {
-
+    var options = {
+        
+    }
 }
 
 function log(msg) {

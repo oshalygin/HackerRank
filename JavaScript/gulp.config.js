@@ -12,7 +12,10 @@ module.exports = function () {
         karmaConfiguration: karmaConfig,
         typeScriptFiles: solutionsPath + "/**/*.ts",
         tsTypingDefinitions: "./typings/**/*.d.ts",
-        solutionsPath: solutionsPath
+        solutionsPath: solutionsPath,
+
+        nodePort: 9999,
+        nodeServer: "./server.js"
     };
 
     return config;

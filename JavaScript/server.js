@@ -1,8 +1,12 @@
 (function () {
+    "use strict";
 
     var express = require("express");
     var path = require("path");
+    var log = require("morgan");
     var application = express();
+
+    var port = process.env.port || 9999;
 
     application.get("/", function (request, response) {
         response.sendfile(path.join(__dirname + "wwwwroot/index.html"));
