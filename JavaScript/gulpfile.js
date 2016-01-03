@@ -53,6 +53,10 @@ gulp.task("default", ["run-tests"]);
 
 gulp.task("help", $.taskListing);
 
+function serve() {
+
+}
+
 function log(msg) {
     if (typeof (msg) === "object") {
         for (var item in msg) {
