@@ -1,13 +1,13 @@
-var gulp = require("gulp");
-var config = require("./gulp.config")();
-var $ = require("gulp-load-plugins")({
-    lazy: true
-});
+"use strict";
 
-var Server = require("karma").Server;
+let gulp = require("gulp");
+let config = require("./gulp.config")();
+let $ = require("gulp-load-plugins")({ lazy: true });
+
+let Server = require("karma").Server;
 
 
-gulp.task("eslint", function () {
+gulp.task("eslint", () => {
     log("*** Validating via ESLint ** ");
 
     return gulp.src([config.solutionsJavaScriptFiles, config.excludeNodeModulesDirectory])
@@ -16,11 +16,9 @@ gulp.task("eslint", function () {
         }))
         .pipe($.eslint.format())
         .pipe($.eslint.failAfterError());
-
 });
 
-
-gulp.task("run-tests", ["transpile"], function () {
+gulp.task("run-tests", ["transpile"], () => {
     log("*** Running JavaScript Tests ***");
 
     new Server({
@@ -30,12 +28,11 @@ gulp.task("run-tests", ["transpile"], function () {
 
 });
 
-gulp.task("transpile", function () {
+gulp.task("transpile", () => {
 
     log("** Transpiling Dev Folder **");
 
-
-    var typescriptOptions = {
+    let typescriptOptions = {
 
         removeComments: false,
         target: "es5",
@@ -52,12 +49,6 @@ gulp.task("transpile", function () {
 gulp.task("default", ["run-tests"]);
 
 gulp.task("help", $.taskListing);
-
-function serve() {
-    var options = {
-        
-    }
-}
 
 function log(msg) {
     if (typeof (msg) === "object") {
