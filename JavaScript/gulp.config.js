@@ -36,7 +36,7 @@ module.exports = () => {
         tsTypingDefinitions: "./typings/**/*.d.ts",
         solutionsPath: solutionsPath,
 
-        nodePort: 9999,
+        nodePort: 3000,
         nodeServer: "./server.js"
     };
 
