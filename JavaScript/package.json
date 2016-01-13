@@ -50,6 +50,7 @@
     "requirejs": "^2.1.22"
   },
   "dependencies": {
+    "es6-shim": "^0.34.1",
     "gulp": "^3.9.0",
     "karma-jasmine": "^0.3.6"
   }

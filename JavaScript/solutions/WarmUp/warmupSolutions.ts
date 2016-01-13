@@ -1,6 +1,8 @@
 
 /// <reference path="../es6polyfills.ts"/>
 
+require('es6-shim');
+
 (function() {
 
     describe("Warm Up", function() {
