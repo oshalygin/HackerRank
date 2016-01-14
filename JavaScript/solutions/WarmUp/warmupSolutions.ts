@@ -1,9 +1,9 @@
 
-/// <reference path="../es6polyfills.ts"/>
 
-require('es6-shim');
+
 
 (function() {
+    require('es6-shim');
 
     describe("Warm Up", function() {
 

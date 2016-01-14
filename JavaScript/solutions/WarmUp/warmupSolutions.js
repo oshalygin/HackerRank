@@ -1,5 +1,5 @@
-/// <reference path="../es6polyfills.ts"/>
 (function () {
+    require('es6-shim');
     describe("Warm Up", function () {
         it("Solve Me First", function () {
             var firstInput = "123";

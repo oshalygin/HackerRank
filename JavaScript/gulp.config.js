@@ -1,12 +1,10 @@
-"use strict";
+module.exports = function () {
 
-module.exports = () => {
+    var solutionsJavaScriptFiles = "solutions/**/*.js";
+    var excludeNodeModulesDirectory = "!node_modules/**";
+    var solutionsPath = "./solutions";
 
-    let solutionsJavaScriptFiles = "solutions/**/*.js";
-    let excludeNodeModulesDirectory = "!node_modules/**";
-    let solutionsPath = "./solutions";
-
-    let karmaConfig = function (config) {
+    var karmaConfig = function (config) {
         config.set({
             basePath: '',
             frameworks: ['jasmine'],
@@ -28,7 +26,7 @@ module.exports = () => {
         });
     };
 
-    let config = {
+    var config = {
         solutionsJavaScriptFiles: solutionsJavaScriptFiles,
         excludeNodeModulesDirectory: excludeNodeModulesDirectory,
         karmaConfiguration: karmaConfig,
@@ -41,4 +39,4 @@ module.exports = () => {
     };
 
     return config;
-}
+};
