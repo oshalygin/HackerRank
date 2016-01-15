@@ -2,29 +2,8 @@ module.exports = function () {
 
     var solutionsJavaScriptFiles = "solutions/**/*.js";
     var excludeNodeModulesDirectory = "!node_modules/**";
+    var karmaConfig = __dirname + "/karma.conf.js";
     var solutionsPath = "./solutions";
-
-    var karmaConfig = function (config) {
-        config.set({
-            basePath: '',
-            frameworks: ['jasmine'],
-            files: [
-                { pattern: 'solutions/**/*.js' }
-            ],
-            exclude: [
-            ],
-            reporters: ['mocha'],
-            colors: true,
-            logLevel: config.LOG_INFO,
-            autoWatch: false,
-            browsers: ['PhantomJS'],
-            plugins: [
-                'karma-jasmine',
-                'karma-mocha-reporter',
-                "karma-phantomjs-launcher"
-            ]
-        });
-    };
 
     var config = {
         solutionsJavaScriptFiles: solutionsJavaScriptFiles,
