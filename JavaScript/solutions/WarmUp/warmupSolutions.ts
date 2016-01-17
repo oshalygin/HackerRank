@@ -422,9 +422,6 @@
             let inputStringLength: number = testInput.length;
             let reverseOfInput: string = reverseString(testInput);
 
-
-
-
             metCondition = function isFunny() {
                 let equivalent: boolean = true;
                 for (let i = 1; i <= inputStringLength - 1; i++) {
@@ -437,7 +434,7 @@
                     let difference = Math.abs(forwardXI - forwardXMinusI)
                         - Math.abs(reverseXI - reverseXMinusI);
 
-                    console.log(difference);
+                    // console.log(difference);
 
                     if (difference !== 0) {
                         equivalent = false;
@@ -455,6 +452,7 @@
                 console.log(notFunny);
             }
 
+            expect(metCondition).toBeTruthy();
 
         });
 
