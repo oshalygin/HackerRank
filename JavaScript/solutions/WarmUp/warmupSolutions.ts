@@ -405,9 +405,29 @@
             // Hence, the string is Not Funny.
 
             let testInput: string = "acxz";
-            let expected: string = "Is Funny";
+            let expected: string = "Funny";
 
+            let funny: string = "Funny";
+            let notFunny: string = "Not Funny"
+            let metCondition: boolean = false;
 
+            metCondition = function isFunny() {
+                for (let i = 0; i <= testInput.length; i++) {
+                    let x: number = testInput.charCodeAt(i);
+                    let xi: number = testInput.charCodeAt(i + 1);
+                    if (Math.abs(xi - x) !== 0) {
+                        return false;
+                    }
+                    return true;
+                }
+            } ();
+
+            if (metCondition) {
+                console.log(funny);
+            }
+            else {
+                console.log(notFunny);
+            }
 
 
         });
