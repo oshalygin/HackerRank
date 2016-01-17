@@ -413,8 +413,13 @@
 
             metCondition = function isFunny() {
                 for (let i = 0; i <= testInput.length; i++) {
+                    let forwardPath: number;
+
                     let x: number = testInput.charCodeAt(i);
                     let xi: number = testInput.charCodeAt(i + 1);
+                    
+
+
                     if (Math.abs(xi - x) !== 0) {
                         return false;
                     }
