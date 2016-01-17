@@ -404,6 +404,14 @@
 
             // Hence, the string is Not Funny.
 
+            function reverseString(input: string) {
+                let reverseString: string = "";
+                for (let i = input.length; i > -1; i--) {
+                    reverseString = reverseString + input.charAt(i);
+                }
+                return reverseString;
+            }
+
             let testInput: string = "acxz";
             let expected: string = "Funny";
 
@@ -411,20 +419,33 @@
             let notFunny: string = "Not Funny"
             let metCondition: boolean = false;
 
+            let inputStringLength: number = testInput.length;
+            let reverseOfInput: string = reverseString(testInput);
+
+
+
+
             metCondition = function isFunny() {
-                for (let i = 0; i <= testInput.length; i++) {
-                    let forwardPath: number;
+                let equivalent: boolean = true;
+                for (let i = 1; i <= inputStringLength - 1; i++) {
 
-                    let x: number = testInput.charCodeAt(i);
-                    let xi: number = testInput.charCodeAt(i + 1);
-                    
+                    let forwardXI: number = testInput.charCodeAt(i - 1);
+                    let forwardXMinusI: number = testInput.charCodeAt(i);
+                    let reverseXI: number = reverseOfInput.charCodeAt(i - 1);
+                    let reverseXMinusI: number = reverseOfInput.charCodeAt(i);
 
+                    let difference = Math.abs(forwardXI - forwardXMinusI)
+                        - Math.abs(reverseXI - reverseXMinusI);
 
-                    if (Math.abs(xi - x) !== 0) {
-                        return false;
+                    console.log(difference);
+
+                    if (difference !== 0) {
+                        equivalent = false;
                     }
-                    return true;
+
                 }
+                return equivalent;
+
             } ();
 
             if (metCondition) {

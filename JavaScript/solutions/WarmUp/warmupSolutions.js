@@ -269,22 +269,36 @@
             // Here:
             // |c-b| != |x-z|
             // Hence, the string is Not Funny.
+            function reverseString(input) {
+                var reverseString = "";
+                for (var i = input.length; i > -1; i--) {
+                    reverseString = reverseString + input.charAt(i);
+                }
+                return reverseString;
+            }
             var testInput = "acxz";
             var expected = "Funny";
             var funny = "Funny";
             var notFunny = "Not Funny";
             var metCondition = false;
+            var inputStringLength = testInput.length;
+            var reverseOfInput = reverseString(testInput);
             metCondition = function isFunny() {
-                for (var i = 0; i <= testInput.length; i++) {
-                    var x = testInput.charCodeAt(i);
-                    var xi = testInput.charCodeAt(i + 1);
-                    if (Math.abs(xi - x) !== 0) {
-                        return false;
+                var equivalent = true;
+                for (var i = 1; i <= inputStringLength - 1; i++) {
+                    var forwardXI = testInput.charCodeAt(i - 1);
+                    var forwardXMinusI = testInput.charCodeAt(i);
+                    var reverseXI = reverseOfInput.charCodeAt(i - 1);
+                    var reverseXMinusI = reverseOfInput.charCodeAt(i);
+                    var difference = Math.abs(forwardXI - forwardXMinusI)
+                        - Math.abs(reverseXI - reverseXMinusI);
+                    console.log(difference);
+                    if (difference !== 0) {
+                        equivalent = false;
                     }
-                    return true;
                 }
+                return equivalent;
             }();
-            // metCondition = isFunny();
             if (metCondition) {
                 console.log(funny);
             }
