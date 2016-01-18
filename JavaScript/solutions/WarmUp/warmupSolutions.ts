@@ -437,7 +437,7 @@
 
                         let difference: number = Math.abs(forwardXI - forwardXMinusI)
                             - Math.abs(reverseXI - reverseXMinusI);
-                        // console.log(difference);
+
                         if (difference !== 0) {
                             equivalent = false;
                         }

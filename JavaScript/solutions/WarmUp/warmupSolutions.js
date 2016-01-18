@@ -295,7 +295,6 @@
                         var reverseXMinusI = reverseOfInput.charCodeAt(i);
                         var difference = Math.abs(forwardXI - forwardXMinusI)
                             - Math.abs(reverseXI - reverseXMinusI);
-                        // console.log(difference);
                         if (difference !== 0) {
                             equivalent = false;
                         }
