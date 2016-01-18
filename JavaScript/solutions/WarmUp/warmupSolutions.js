@@ -276,36 +276,41 @@
                 }
                 return reverseString;
             }
-            var testInput = "acxz";
-            var expected = "Funny";
+            var input = "2\nacxz\nbcxz";
             var funny = "Funny";
             var notFunny = "Not Funny";
-            var metCondition = false;
-            var inputStringLength = testInput.length;
-            var reverseOfInput = reverseString(testInput);
-            metCondition = function isFunny() {
-                var equivalent = true;
-                for (var i = 1; i <= inputStringLength - 1; i++) {
-                    var forwardXI = testInput.charCodeAt(i - 1);
-                    var forwardXMinusI = testInput.charCodeAt(i);
-                    var reverseXI = reverseOfInput.charCodeAt(i - 1);
-                    var reverseXMinusI = reverseOfInput.charCodeAt(i);
-                    var difference = Math.abs(forwardXI - forwardXMinusI)
-                        - Math.abs(reverseXI - reverseXMinusI);
-                    // console.log(difference);
-                    if (difference !== 0) {
-                        equivalent = false;
+            var arrayOfInput = input.split("\n");
+            // console.log(arrayOfInput[0]);
+            // console.log(arrayOfInput[1]);
+            // console.log(arrayOfInput[2]);
+            var numberOfTestCases = parseInt(arrayOfInput[0]);
+            for (var j = 0; j < numberOfTestCases; j++) {
+                var testInput = arrayOfInput[j];
+                var metCondition = false;
+                var inputStringLength = testInput.length;
+                var reverseOfInput = reverseString(testInput);
+                metCondition = function isFunny() {
+                    var equivalent = true;
+                    for (var i = 1; i <= inputStringLength - 1; i++) {
+                        var forwardXI = testInput.charCodeAt(i - 1);
+                        var forwardXMinusI = testInput.charCodeAt(i);
+                        var reverseXI = reverseOfInput.charCodeAt(i - 1);
+                        var reverseXMinusI = reverseOfInput.charCodeAt(i);
+                        var difference = Math.abs(forwardXI - forwardXMinusI)
+                            - Math.abs(reverseXI - reverseXMinusI);
+                        if (difference !== 0) {
+                            equivalent = false;
+                        }
                     }
+                    return equivalent;
+                }();
+                if (metCondition) {
+                    console.log(funny);
                 }
-                return equivalent;
-            }();
-            if (metCondition) {
-                console.log(funny);
+                else {
+                    console.log(notFunny);
+                }
             }
-            else {
-                console.log(notFunny);
-            }
-            expect(metCondition).toBeTruthy();
         });
     });
 })();

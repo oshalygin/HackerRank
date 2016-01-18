@@ -412,47 +412,49 @@
                 return reverseString;
             }
 
-            let testInput: string = "acxz";
-            let expected: string = "Funny";
-
+            let input: string = "2\nacxz\nbcxz";
             let funny: string = "Funny";
             let notFunny: string = "Not Funny"
-            let metCondition: boolean = false;
+            let arrayOfInput: string[] = input.split("\n");
 
-            let inputStringLength: number = testInput.length;
-            let reverseOfInput: string = reverseString(testInput);
+            let numberOfTestCases: number = parseInt(arrayOfInput[0]);
 
-            metCondition = function isFunny() {
-                let equivalent: boolean = true;
-                for (let i = 1; i <= inputStringLength - 1; i++) {
+            for (let j = 0; j < numberOfTestCases; j++) {
+                let testInput: string = arrayOfInput[j];
+                let metCondition: boolean = false;
 
-                    let forwardXI: number = testInput.charCodeAt(i - 1);
-                    let forwardXMinusI: number = testInput.charCodeAt(i);
-                    let reverseXI: number = reverseOfInput.charCodeAt(i - 1);
-                    let reverseXMinusI: number = reverseOfInput.charCodeAt(i);
+                let inputStringLength: number = testInput.length;
+                let reverseOfInput: string = reverseString(testInput);
 
-                    let difference = Math.abs(forwardXI - forwardXMinusI)
-                        - Math.abs(reverseXI - reverseXMinusI);
+                metCondition = function isFunny() {
+                    let equivalent: boolean = true;
+                    for (let i = 1; i <= inputStringLength - 1; i++) {
 
-                    // console.log(difference);
+                        let forwardXI: number = testInput.charCodeAt(i - 1);
+                        let forwardXMinusI: number = testInput.charCodeAt(i);
+                        let reverseXI: number = reverseOfInput.charCodeAt(i - 1);
+                        let reverseXMinusI: number = reverseOfInput.charCodeAt(i);
 
-                    if (difference !== 0) {
-                        equivalent = false;
+                        let difference = Math.abs(forwardXI - forwardXMinusI)
+                            - Math.abs(reverseXI - reverseXMinusI);
+
+                        if (difference !== 0) {
+                            equivalent = false;
+                        }
+
                     }
+                    return equivalent;
 
+                } ();
+
+                if (metCondition) {
+                    console.log(funny);
                 }
-                return equivalent;
-
-            } ();
-
-            if (metCondition) {
-                console.log(funny);
-            }
-            else {
-                console.log(notFunny);
+                else {
+                    console.log(notFunny);
+                }
             }
 
-            expect(metCondition).toBeTruthy();
 
         });
 
