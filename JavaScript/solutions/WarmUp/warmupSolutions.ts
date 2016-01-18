@@ -419,7 +419,7 @@
 
             let numberOfTestCases: number = parseInt(arrayOfInput[0]);
 
-            for (let j = 0; j < numberOfTestCases; j++) {
+            for (let j = 1; j <= numberOfTestCases; j++) {
                 let testInput: string = arrayOfInput[j];
                 let metCondition: boolean = false;
 
@@ -435,13 +435,12 @@
                         let reverseXI: number = reverseOfInput.charCodeAt(i - 1);
                         let reverseXMinusI: number = reverseOfInput.charCodeAt(i);
 
-                        let difference = Math.abs(forwardXI - forwardXMinusI)
+                        let difference: number = Math.abs(forwardXI - forwardXMinusI)
                             - Math.abs(reverseXI - reverseXMinusI);
-
+                        // console.log(difference);
                         if (difference !== 0) {
                             equivalent = false;
                         }
-
                     }
                     return equivalent;
 

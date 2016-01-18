@@ -280,11 +280,8 @@
             var funny = "Funny";
             var notFunny = "Not Funny";
             var arrayOfInput = input.split("\n");
-            // console.log(arrayOfInput[0]);
-            // console.log(arrayOfInput[1]);
-            // console.log(arrayOfInput[2]);
             var numberOfTestCases = parseInt(arrayOfInput[0]);
-            for (var j = 0; j < numberOfTestCases; j++) {
+            for (var j = 1; j <= numberOfTestCases; j++) {
                 var testInput = arrayOfInput[j];
                 var metCondition = false;
                 var inputStringLength = testInput.length;
@@ -298,6 +295,7 @@
                         var reverseXMinusI = reverseOfInput.charCodeAt(i);
                         var difference = Math.abs(forwardXI - forwardXMinusI)
                             - Math.abs(reverseXI - reverseXMinusI);
+                        // console.log(difference);
                         if (difference !== 0) {
                             equivalent = false;
                         }
