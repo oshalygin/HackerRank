@@ -447,10 +447,10 @@
                 } ();
 
                 if (metCondition) {
-                    console.log(funny);
+                    //console.log(funny);
                 }
                 else {
-                    console.log(notFunny);
+                    //console.log(notFunny);
                 }
             }
 
@@ -474,7 +474,23 @@
 
 
             // Note: The last line has 0 spaces before it.
+            let sizeOfStairCase: number = 6;
+            let arrayOfStairs: string[] = [];
+            var expected = ["     #", "    ##", "   ###", "  ####", " #####", "######"];
+            let stair: string;
 
+            let whiteSpace = " ";
+            let hash = "#";
+
+            for (let i = 1; i <= sizeOfStairCase; i++) {
+                stair = whiteSpace.repeat(sizeOfStairCase - i) + hash.repeat(i);
+                arrayOfStairs.push(stair);
+                console.log(stair);
+            }
+
+            for (let i = 0; i < expected.length; i++) {
+                expect(expected[i]).toEqual(arrayOfStairs[i]);
+            }
 
         });
 
