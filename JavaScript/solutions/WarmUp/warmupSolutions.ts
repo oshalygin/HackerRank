@@ -544,6 +544,9 @@
             //  For N=5, 33333 is the only possible number.
             //  For N=11, 55555533333 and all permutations of these digits are valid numbers; among them, the given number is the largest one.
 
+            let numberOfTestCases: number = 5;
+            let arrayOfInputs: number[] = [1, 3, 5, 11];
+            let noSuchNumbers: number = -1;
 
         });
 
