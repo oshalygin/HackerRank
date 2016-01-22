@@ -547,6 +547,18 @@
             let numberOfTestCases: number = 5;
             let arrayOfInputs: number[] = [1, 3, 5, 11];
             let noSuchNumbers: number = -1;
+            let five: number = 5;
+            let three: number = 3;
+            let numberOfFives: number = 0;
+            let numberOfThrees: number = 0;
+            let validNumbers: number[] = [];
+
+
+            function isDvisibleByFive(numberOfFives) {
+                return true;
+            }
+
+            validNumbers.sort((x, y) => x > y ? x : y);
 
         });
 
