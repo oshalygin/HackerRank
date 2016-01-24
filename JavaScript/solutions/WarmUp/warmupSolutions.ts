@@ -557,8 +557,12 @@
             function isDvisibleByFive(numberOfFives) {
                 return true;
             }
+            function isDivisibleByThree(numberOfThrees) {
+                return true;
+            }
 
             validNumbers.sort((x, y) => x > y ? x : y);
+            
 
         });
 
