@@ -611,16 +611,22 @@
             let initialHeight: number = 1;
             let newLine: string = "\n";
             let arrayOfInput: number[] = [0, 1, 4];
-            let result: number;
+            let result: number = 1;
 
             function spring(input) { return input * 2; };
             function summer(input) { return input + 1; };
 
             for (let testCase of arrayOfInput) {
-                let odd: boolean = false;
                 for (let i = 0; i < testCase; i++){
-
+                    if (i % 2) {
+                        result = summer(result);
+                    }
+                    else {
+                        result = spring(result);
+                    }
                 }
+                console.log(result);
+                result = 1;
             }
 
 
