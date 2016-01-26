@@ -607,7 +607,21 @@
             // In the second case (N=1), the tree doubles in height and is 2 meters tall after the spring cycle.
 
             // In the third case (N=4), the tree doubles its height in spring (H=2), then grows a meter in summer (H=3), then doubles after the next spring (H=6), and grows another meter after summer (H=7). Thus, at the end of 4 cycles, its height is 7 meters.
+            let testCases: number = 3;
+            let initialHeight: number = 1;
+            let newLine: string = "\n";
+            let arrayOfInput: number[] = [0, 1, 4];
+            let result: number;
 
+            function spring(input) { return input * 2; };
+            function summer(input) { return input + 1; };
+
+            for (let testCase of arrayOfInput) {
+                let odd: boolean = false;
+                for (let i = 0; i < testCase; i++){
+
+                }
+            }
 
 
         });

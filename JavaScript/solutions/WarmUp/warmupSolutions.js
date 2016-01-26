@@ -335,5 +335,91 @@
                 expect(expected[i]).toEqual(arrayOfStairs[i]);
             }
         });
+        it("Sherlock and the Beast", function () {
+            // Sherlock Holmes suspects his archenemy, Professor Moriarty, is once again plotting something diabolical. Sherlock's companion, Dr. Watson, suggests Moriarty may be responsible for MI6's recent issues with their supercomputer, The Beast.
+            // Shortly after resolving to investigate, Sherlock receives a note from Moriarty boasting about infecting The Beast with a virus; however, he also gives him a clue—a number, N. Sherlock determines the key to removing the virus is to find the largest Decent Number having N digits.
+            // A Decent Number has the following properties:
+            // 1.Its digits can only be 3's and/or 5's.
+            // 2.The number of 3's it contains is divisible by 5.
+            // 3.The number of 5's it contains is divisible by 3.
+            // Moriarty's virus shows a clock counting down to The Beast's destruction, and time is running out fast. Your task is to help Sherlock find the key before The Beast is destroyed!
+            // Constraints
+            // 1≤T≤20
+            // 1≤N≤100000
+            // Input Format
+            // The first line is an integer, T, denoting the number of test cases.
+            // The T subsequent lines each contain an integer, N, detailing the number of digits in the number.
+            // Output Format
+            // Print the largest Decent Number having N digits; if no such number exists, tell Sherlock by printing -1.
+            // Sample Input
+            // 4
+            // 1
+            // 3
+            // 5
+            // 11
+            // Sample Output
+            // -1
+            // 555
+            // 33333
+            // 55555533333
+            // Explanation
+            // For N=1, there is no such number.
+            //  For N=3, 555 is the only possible number.
+            //  For N=5, 33333 is the only possible number.
+            //  For N=11, 55555533333 and all permutations of these digits are valid numbers; among them, the given number is the largest one.
+            var numberOfTestCases = 5;
+            var arrayOfInputs = [1, 3, 5, 11];
+            var noSuchNumbers = -1;
+            var five = 5;
+            var three = 3;
+            var numberOfFives = 0;
+            var numberOfThrees = 0;
+            var validNumbers = [];
+            function isDvisibleByFive(numberOfFives) {
+                return true;
+            }
+            function isDivisibleByThree(numberOfThrees) {
+                return true;
+            }
+            validNumbers.sort(function (x, y) { return x > y ? x : y; });
+        });
+        it("Utopian Tree", function () {
+            // The Utopian Tree goes through 2 cycles of growth every year. Each spring, it doubles in height. Each summer, its height increases by 1 meter.
+            // Laura plants a Utopian Tree sapling with a height of 1 meter at the onset of spring. How tall will her tree be after N growth cycles?
+            // Input Format
+            // The first line contains an integer, T, the number of test cases.
+            // T subsequent lines each contain an integer, N, denoting the number of cycles for that test case.
+            // Constraints
+            // 1≤T≤10
+            // 0≤N≤60
+            // Output Format
+            // For each test case, print the height of the Utopian Tree after N cycles. Each height must be printed on a new line.
+            // Sample Input
+            // 3
+            // 0
+            // 1
+            // 4
+            // Sample Output
+            // 1
+            // 2
+            // 7
+            // Explanation
+            // There are 3 test cases.
+            // In the first case (N=0), the initial height (H=1) of the tree remains unchanged.
+            // In the second case (N=1), the tree doubles in height and is 2 meters tall after the spring cycle.
+            // In the third case (N=4), the tree doubles its height in spring (H=2), then grows a meter in summer (H=3), then doubles after the next spring (H=6), and grows another meter after summer (H=7). Thus, at the end of 4 cycles, its height is 7 meters.
+            var testCases = 3;
+            var initialHeight = 1;
+            var newLine = "\n";
+            var arrayOfInput = [0, 1, 4];
+            function spring(input) { return input * 2; }
+            ;
+            function summer(input) { return input + 1; }
+            ;
+            for (var _i = 0; _i < arrayOfInput.length; _i++) {
+                var testCase = arrayOfInput[_i];
+                console.log(testCase);
+            }
+        });
     });
 })();
