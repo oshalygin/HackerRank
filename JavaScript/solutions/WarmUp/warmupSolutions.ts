@@ -683,6 +683,18 @@
 
             // Hence the answer 30 120 210 300.
 
+            let inputSeparator: string = "\n";
+            let firstValue: number;
+            let secondValue: number;
+            let thirdValue: number;
+            let input: string = "2\n3\n1\n2\n4\n10\n100";
+            let inputArray: number[] = input
+                .split(inputSeparator)
+                .map(x=> parseInt(x, 10));
+
+            for (var num of inputArray) {
+                console.log(num);
+            }
 
         });
 
