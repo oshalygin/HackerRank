@@ -414,9 +414,9 @@
             var arrayOfInput = [0, 1, 4];
             var result = 1;
             function spring(input) { return input * 2; }
-            ;
+
             function summer(input) { return input + 1; }
-            ;
+
             for (var _i = 0; _i < arrayOfInput.length; _i++) {
                 var testCase = arrayOfInput[_i];
                 for (var i = 0; i < testCase; i++) {
