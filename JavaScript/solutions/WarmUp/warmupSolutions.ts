@@ -692,9 +692,7 @@
                 .split(inputSeparator)
                 .map(x=> parseInt(x, 10));
 
-            for (var num of inputArray) {
-                console.log(num);
-            }
+                
 
         });
 
