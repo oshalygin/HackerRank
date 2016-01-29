@@ -477,9 +477,14 @@
             var inputArray = input
                 .split(inputSeparator)
                 .map(function (x) { return parseInt(x, 10); });
-            for (var _i = 0; _i < inputArray.length; _i++) {
-                var num = inputArray[_i];
-                console.log(num);
+            var numberOfTestCases = inputArray.shift();
+            for (var i = 0; i < inputArray.length / numberOfTestCases; i++) {
+                var testCase = inputArray.slice(i, i + 3);
+                for (var _i = 0; _i < testCase.length; _i++) {
+                    var t = testCase[_i];
+                    console.log(t);
+                }
+                i += 3;
             }
         });
     });

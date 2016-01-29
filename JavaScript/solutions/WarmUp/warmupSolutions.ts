@@ -692,7 +692,19 @@
                 .split(inputSeparator)
                 .map(x=> parseInt(x, 10));
 
+            let numberOfTestCases: number = inputArray.shift();
+            for (let i = 0; i < inputArray.length / numberOfTestCases; i++){
+                let testCase = inputArray.slice(i, i + 3);
+                let numberInSeries = testCase.shift();
                 
+
+
+
+                i += 3;
+            }
+
+
+
 
         });
 
