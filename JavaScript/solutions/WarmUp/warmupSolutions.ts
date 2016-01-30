@@ -650,9 +650,11 @@
 
             // Sample Input
             // 2
+
             // 3
             // 1
             // 2
+
             // 4
             // 10
             // 100
@@ -695,9 +697,7 @@
             let numberOfTestCases: number = inputArray.shift();
             for (let i = 0; i < inputArray.length / numberOfTestCases; i++){
                 let testCase = inputArray.slice(i, i + 3);
-                let numberInSeries = testCase.shift();
-                
-
+                let numberOfStones: number = testCase.shift();
 
 
                 i += 3;
